@@ -22,10 +22,12 @@ class Pizza extends BaseController
 				'ingredients' => 'required',
 				'prize' => 'required'
 			];
+
 			if(!$this->validate($rules)){
 				$data['validate'] = $this->validator;
 				
 			}else{
+				
 				$model = new PizzaModel();
 				$newData = [
 					'name' => $this->request->getVar('name'),
@@ -33,13 +35,13 @@ class Pizza extends BaseController
 					'prize' => $this->request->getVar('prize')
 				];
 
-				$model->save($newData);
+				$model->createPizza($newData);
 				return redirect()->to('/dashboard');
+
 			}
 
 		}
-
-		// return view('index',$data);
+		return view('index',$data);
 	}
 
 	// delete pizza
@@ -52,10 +54,20 @@ class Pizza extends BaseController
 	}
 
 	// edit pizza
-	public function editPizza($id)
-	{
-		$model = new PizzaModel();
-		$data['edit'] = $model->find($id);
-		return view('index',$data);
-	}
+
+	// public function editPizza($id)
+	// {
+	// 	$model = new PizzaModel();
+	// 	$data['edit'] = $model->find($id);
+	// 	return view('index',$data);
+	// }
+
+		// update pizza
+
+	// public function update()
+	// {
+	// 	$model = new PizzaModel();
+	// 	$model->update($_POST['id'],$_POST);
+	// 	return redirect()->to('/dashboard');
+	// }
 }

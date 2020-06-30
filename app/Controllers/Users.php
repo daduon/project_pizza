@@ -14,7 +14,7 @@ class Users extends BaseController
 			];
 			$error = [
 				'password' => [
-					'validateUser' => 'password not match!'
+					'validateUser' => 'email or password not match!'
 				]
 			];
 			if(!$this->validate($rules,$error)){
@@ -25,7 +25,7 @@ class Users extends BaseController
 							  ->first();
 				$this->setUserSession($user);
 				// direct to rout dashboard
-				return redirect()->to('dashboard');
+				return redirect()->to('/dashboard');
 			}
 
 		}
@@ -36,14 +36,15 @@ class Users extends BaseController
 		$data = [
 			'id' => $user['id'],
 			'address' => $user['address'],
-			'password' => $user['password'],
 			'email' => $user['email'],
-			'role' => $user['role']
+			'role' => $user['role'],
+			'isLoggedIn' => true
 		];
 
 		session()->set($data);
 		return true;
 	}	
+
 // register before login
 	public function register()
 	{
@@ -53,7 +54,7 @@ class Users extends BaseController
 
 		if($this->request->getMethod() == "post"){
 			$rules = [
-				'email' => 'required',
+				'email' => 'required|valid_email',
 				'password' => 'required',
 				'address' => 'required',
 			];
@@ -69,7 +70,8 @@ class Users extends BaseController
 					'role' => $this->request->getVar('role'),
 				];
 
-				$model->save($newData);
+				$model->createUsers($newData);
+				// message tell user
 				$session = session();
 				$session->setFlashdata('success','successful Register');
 				return redirect()->to('/');
@@ -79,7 +81,7 @@ class Users extends BaseController
 		
 		return view('auths/register',$data);
 	}
-
+	// logout
 	public function logout(){
 		session()->destroy();
 		return redirect()->to('/');

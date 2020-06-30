@@ -1,19 +1,24 @@
+
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
+
 <div class="auth">
   <div class="auth__header">
     <div class="auth__logo">
       <img height="90" src="images/logo.svg" alt="">
     </div>
   </div>
+
   <div class="auth__body">
     <form class="auth__form" autocomplete="off" action="" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">Peperoni App</h3>
         <hr>
+
         <?php if(session()->get('success')) :?>
           <div class="alert alert-success" role="alert"> <?= session()->get('success') ?></div>
         <?php endif; ?>
+
         <div>
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
@@ -25,6 +30,15 @@
           </div>
         </div>
       </div>
+
+      <?php if(isset($validation)) :?>
+        <div class="col-12">
+          <div class="alert alert-danger" role="alert">
+            <?= $validation->listErrors(); ?>
+          </div>
+        </div>
+      <?php endif; ?>
+
       <div class="auth__form_actions">
         <button type="submit" class="btn btn-primary btn-lg btn-block">
           NEXT
@@ -36,13 +50,7 @@
           </a>
         </div>
       </div>
-      <?php if(isset($validation)) :?>
-        <div class="col-12">
-          <div class="alert alert-danger" role="alert">
-            <?= $validation->listErrors(); ?>
-          </div>
-        </div>
-      <?php endif; ?>
+     
     </form>
   </div>
 </div>

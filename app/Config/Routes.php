@@ -1,4 +1,5 @@
-<?php namespace Config;
+<?php 
+namespace Config;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -34,7 +35,7 @@ $routes->get('/', 'Users::index');
 $routes->get('/logout', 'Users::logout');
 $routes->match(['get','post'],'/register','Users::register');
 $routes->get('/dashboard','Pizza::index');
-// $routes->get('dashboard/edit/(:num)','Dashboard::editPizza/$1');
+// $routes->get('/edit/(:num)','Pizza::editPizza/$1');
 
 /**
  * --------------------------------------------------------------------
