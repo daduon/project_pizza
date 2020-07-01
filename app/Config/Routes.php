@@ -34,8 +34,13 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Users::index');
 $routes->get('/logout', 'Users::logout');
 $routes->match(['get','post'],'/register','Users::register');
-$routes->get('/dashboard','Pizza::index');
-$routes->get('/dashboard/remove/(:num)','Pizza::deletePizza/$1');
+$routes->group('dashboard',function($routes){
+	$routes->get('/','Pizza::index');
+	$routes->get('remove/(:num)','Pizza::deletePizza/$1');
+	$routes->get('edit/(:num)','Pizza::editPizza/$1');
+});
+
+
 
 /**
  * --------------------------------------------------------------------

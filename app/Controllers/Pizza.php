@@ -55,19 +55,19 @@ class Pizza extends BaseController
 
 	// edit pizza
 
-	// public function editPizza($id)
-	// {
-	// 	$model = new PizzaModel();
-	// 	$data['edit'] = $model->find($id);
-	// 	return view('index',$data);
-	// }
+	public function editPizza($id)
+	{
+		$model = new PizzaModel();
+		$data['edit'] = $model->find($id);
+		return view('index',$data);
+	}
 
-		// update pizza
+	// update pizza
 
-	// public function update()
-	// {
-	// 	$model = new PizzaModel();
-	// 	$model->update($_POST['id'],$_POST);
-	// 	return redirect()->to('/dashboard');
-	// }
+	public function updatePizza()
+	{
+		$model = new PizzaModel();
+		$model->update($_POST['id'],$_POST);
+		return redirect()->to('/dashboard');
+	}
 }
