@@ -33,7 +33,7 @@
 
           <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" name="role" class="form-check-input" value="1">I'm a manager
+                <input type="checkbox" name="role" class="form-check-input" value="manager">I'm a manager
             </label>
           </div>
 

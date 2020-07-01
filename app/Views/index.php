@@ -11,8 +11,8 @@
 			<div class="col-8">
 			<h5 class="text-center"></h5>
 				<div class="text-right">
-
-				<?php if(session()->get('role') == 1) :?>
+				<!-- set role for manager or normal user -->
+				<?php if(session()->get('role') == 'manager') :?>
 					<a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPizza">
 						<i class="material-icons float-left" data-toggle="tooltip" title="Add Pizza!" data-placement="left">add</i>&nbsp;Add
 					</a>
@@ -26,7 +26,7 @@
 						<th>Ingredients</th>
 						<th>Price</th>
 
-					<?php if(session()->get('role') == 1) :?>
+					<?php if(session()->get('role') == 'manager') :?>
 						<th>Action</th>
 					<?php endif; ?>
 					</tr>
@@ -39,9 +39,9 @@
 						<td class="text-success font-weight-bolder"><?= $values['prize']; ?> $</td>
 
 						<td>
-						<?php if(session()->get('role') == 1) :?>
+						<?php if(session()->get('role') == 'manager') :?>
 							<a href="pizza/editPizza/<?= $values['id']; ?>" class="edit" data-toggle="modal" data-target="#updatePizza"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Pizza!" data-placement="left">edit</i></a>
-							<a href="pizza/deletePizza/<?= $values['id']; ?>" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
+							<a href="dashboard/remove/<?= $values['id']; ?>" data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
 						<?php endif; ?>
 						</td>
 

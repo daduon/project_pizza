@@ -35,7 +35,7 @@ $routes->get('/', 'Users::index');
 $routes->get('/logout', 'Users::logout');
 $routes->match(['get','post'],'/register','Users::register');
 $routes->get('/dashboard','Pizza::index');
-// $routes->get('/edit/(:num)','Pizza::editPizza/$1');
+$routes->get('/dashboard/remove/(:num)','Pizza::deletePizza/$1');
 
 /**
  * --------------------------------------------------------------------
