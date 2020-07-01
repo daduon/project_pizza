@@ -10,12 +10,12 @@ class UserModel extends Model{
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];
 
-    public function createUsers($suerInfo){
+    public function createUsers($userInfo){
         $this->insert([
-            'email' => $suerInfo['email'],
-            'password' => $suerInfo['password'],
-            'address' => $suerInfo['address'],
-            'role' => $suerInfo['role'],
+            'email' => $userInfo['email'],
+            'password' => $userInfo['password'],
+            'address' => $userInfo['address'],
+            'role' => $userInfo['role'],
         ]);
     }
 

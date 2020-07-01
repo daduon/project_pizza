@@ -7,11 +7,11 @@ class PizzaModel extends Model{
     protected $primaryKey = 'id';
     protected $returnType     = 'array';
     protected $allowedFields = ['name','ingredients','prize'];
-    public function createPizza($suerInfo){
+    public function createPizza($pizzaInfo){
         $this->insert([
-            'name' => $suerInfo['name'],
-            'ingredients' => $suerInfo['ingredients'],
-            'prize' => $suerInfo['prize'],
+            'name' => $pizzaInfo['name'],
+            'ingredients' => $pizzaInfo['ingredients'],
+            'prize' => $pizzaInfo['prize'],
         ]);
     }
 }
