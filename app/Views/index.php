@@ -78,24 +78,26 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <!-- Modal body -->
-
         <div class="modal-body text-right">
-			<form  action="pizza/addPizza" method="post">
+			<form  action="pizza/addPizza" method="post" id="form_id">
 				<div class="form-group">
-					<input type="text" name="name" class="form-control" placeholder="Pizza name">
+					<input type="text" name="name" class="form-control" placeholder="Pizza name" required >
+					<span id="error_name"></span>
 				</div>
 
 				<div class="form-group">
-					<textarea name="ingredients" placeholder="Ingredients" class="form-control"></textarea>
+					<textarea name="ingredients" placeholder="Ingredients" class="form-control" required ></textarea>
+					<span id="error_ingredients"></span>
 				</div>
 
 				<div class="form-group">
-					<input type="number" name="prize" class="form-control" placeholder="Prize in dollars">
+					<input type="number" name="prize" class="form-control" placeholder="Prize in dollars" required >
+					<span id="error_prize"></span>
 				</div>
 
 			<a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	 &nbsp;
-		  <input type="submit" value="CREATE" class="createBtn text-warning">
+		  		<input type="submit" value="CREATE" class="createBtn text-warning">
         </div>
         </form>
       </div>
@@ -127,16 +129,16 @@
 				</div>
 
 				<div class="form-group">
-					<input type="text" name="name" id="name" class="form-control">
+					<input type="text" name="name" id="name" class="form-control" required >
 				</div>
 				<div id="error_para"></div>
 
 				<div class="form-group">
-					<input type="text" name="prize" id="prize" class="form-control" >
+					<input type="text" name="prize" id="prize" class="form-control" required >
 				</div>
 
 				<div class="form-group">
-					<textarea name="ingredients" id="ingredients" class="form-control"></textarea>
+					<textarea name="ingredients" id="ingredients" class="form-control" required ></textarea>
 				</div>
 			<a data-dismiss="modal" class="closeModal"></a>
 		 	 &nbsp;

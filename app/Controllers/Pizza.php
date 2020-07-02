@@ -14,34 +14,21 @@ class Pizza extends BaseController
 	public function addPizza()
 	{	
 		helper(['form']);
-		$data = [];
-
 		if($this->request->getMethod() == "post"){
-			$rules = [
-				'name' => 'required',
-				'ingredients' => 'required',
-				'prize' => 'required'
+
+			$model = new PizzaModel();
+			$name = $this->request->getVar('name');
+			$ingredients = $this->request->getVar('ingredients');
+			$prize = $this->request->getVar('prize');
+			$newData = [
+				'name' => $name,
+				'ingredients' => $ingredients,
+				'prize' => $prize
 			];
-
-			if(!$this->validate($rules)){
-				$data['validate'] = $this->validator;
-				
-			}else{
-				
-				$model = new PizzaModel();
-				$newData = [
-					'name' => $this->request->getVar('name'),
-					'ingredients' => $this->request->getVar('ingredients'),
-					'prize' => $this->request->getVar('prize')
-				];
-
-				$model->createPizza($newData);
-				return redirect()->to('/dashboard');
-
-			}
+			$model->createPizza($newData);
+			return redirect()->to('/dashboard');
 
 		}
-		return view('index',$data);
 	}
 
 	// delete pizza
@@ -62,12 +49,26 @@ class Pizza extends BaseController
 		return view('index',$data);
 	}
 
-	// update pizza
-
 	public function updatePizza()
-	{
-		$model = new PizzaModel();
-		$model->update($_POST['id'],$_POST);
-		return redirect()->to('/dashboard');
+    {
+		helper(['form']);
+		if($this->request->getMethod() == "post"){
+
+			$model = new PizzaModel();
+			$id = $this->request->getVar('id');
+			$name = $this->request->getVar('name');
+			$ingredients = $this->request->getVar('ingredients');
+			$prize = $this->request->getVar('prize');
+		
+			$newData = array(
+				'name'=>$name,
+				'ingredients'=>$ingredients,
+				'prize'=>$prize
+			);
+				
+			$model->update($id,$newData);
+			return redirect()->to('/dashboard');
+		}
+
 	}
 }
