@@ -42,7 +42,7 @@
 
 						<td><?= $values['ingredients']; ?></td>
 
-						<td class="text-success font-weight-bolder"><?= $values['prize']; ?> $</td>
+						<td class="text-success font-weight-bolder"><?= $values['prize']; ?></td>
 
 						<td>
 						<?php if(session()->get('role') == 'manager') :?>
@@ -89,7 +89,7 @@
 				</div>
 
 				<div class="form-group">
-					<input type="number" name="prize" class="form-control" placeholder="Prize in dollars" required >
+					<input type="number" name="prize" class="form-control" placeholder="Prize in dollars" min="1" max="50" required >
 				</div>
 
 			<a data-dismiss="modal" class="closeModal">DISCARD</a>
@@ -130,7 +130,7 @@
 				</div>
 
 				<div class="form-group">
-					<input type="text" name="prize" id="prize" class="form-control" required >
+					<input type="number" name="prize" id="prize" class="form-control" min="1" max="50" required >
 				</div>
 
 				<div class="form-group">

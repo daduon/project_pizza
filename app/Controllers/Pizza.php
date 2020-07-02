@@ -48,12 +48,11 @@ class Pizza extends BaseController
 		$data['edit'] = $model->find($id);
 		return view('index',$data);
 	}
-
+	// update pizza
 	public function updatePizza()
     {
 		helper(['form']);
 		if($this->request->getMethod() == "post"){
-
 			$model = new PizzaModel();
 			$id = $this->request->getVar('id');
 			$name = $this->request->getVar('name');
