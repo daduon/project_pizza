@@ -60,11 +60,11 @@ class Pizza extends BaseController
 			$ingredients = $this->request->getVar('ingredients');
 			$prize = $this->request->getVar('prize');
 		
-			$newData = array(
+			$newData = [
 				'name'=>$name,
 				'ingredients'=>$ingredients,
 				'prize'=>$prize
-			);
+			];
 				
 			$model->update($id,$newData);
 			return redirect()->to('/dashboard');

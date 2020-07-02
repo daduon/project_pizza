@@ -82,17 +82,14 @@
 			<form  action="pizza/addPizza" method="post" id="form_id">
 				<div class="form-group">
 					<input type="text" name="name" class="form-control" placeholder="Pizza name" required >
-					<span id="error_name"></span>
 				</div>
 
 				<div class="form-group">
 					<textarea name="ingredients" placeholder="Ingredients" class="form-control" required ></textarea>
-					<span id="error_ingredients"></span>
 				</div>
 
 				<div class="form-group">
 					<input type="number" name="prize" class="form-control" placeholder="Prize in dollars" required >
-					<span id="error_prize"></span>
 				</div>
 
 			<a data-dismiss="modal" class="closeModal">DISCARD</a>
@@ -131,7 +128,6 @@
 				<div class="form-group">
 					<input type="text" name="name" id="name" class="form-control" required >
 				</div>
-				<div id="error_para"></div>
 
 				<div class="form-group">
 					<input type="text" name="prize" id="prize" class="form-control" required >
